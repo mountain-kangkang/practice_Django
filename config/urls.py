@@ -16,11 +16,14 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
-from config.views import main, burger_list
+from django.urls import path, include
+
+from mung import views
+from member import views as member_views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", main),
-    path("burgers/", burger_list),
+    path("", views.main_page),
+    path("users/", include("django.contrib.auth.urls")),
+    path("signup/", member_views.sign_up, name="signup"),
 ]
