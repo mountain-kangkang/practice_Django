@@ -19,5 +19,8 @@
             {% endif %}
         </div>
     </nav>
+    {% if request.user.is_authenticated %}
+        <p>{{ session }}</p>
+    {% endif %}
 </body>
 </html>
